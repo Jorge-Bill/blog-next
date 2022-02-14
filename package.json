@@ -5,7 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next export"
+    "export": "next export",
+    "commit": "git-cz"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "afrodite-components": "git+ssh://git@github.com:Jorge-Bill/afrodite-components-react.git",
@@ -20,6 +32,11 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.0.0"
+    "@netlify/plugin-nextjs": "^4.0.0",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "^4.3.0"
   }
 }
